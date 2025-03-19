@@ -25,6 +25,11 @@
 	img {
 		width: 100%;
 	}
+
+	input:focus-within,
+	textarea:focus-within {
+		outline-color: var(--color-primary);
+	}
 }
 
 @layer components {

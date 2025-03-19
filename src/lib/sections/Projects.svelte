@@ -2,7 +2,14 @@
 	import chevron from '$lib/assets/icons/chevron.svg';
 	import { fade } from 'svelte/transition';
 
-	const projects = [
+	type Project = {
+		img: string;
+		title: string;
+		text: string;
+		links: { [key: string]: string };
+	};
+
+	const projects: Project[] = [
 		{
 			img: 'https://picsum.photos/300/300',
 			title: 'Some cool project title',
@@ -55,24 +62,26 @@
 	<div class="wrapper">
 		<h2 class="main-site-header">My Projects</h2>
 
-		<section class=" relative">
+		<section class=" relative w-full">
 			{#each [projects[currentProject]] as project (currentProject)}
 				<article
 					transition:fade
 					onintrostartcapture={() => (isAnimating = true)}
 					onintroend={() => (isAnimating = false)}
-					class=" project-card max-h-[20rem] w-full gap-4 *:w-1/2 md:flex {isAnimating
+					class=" project-card mx-auto flex flex-col items-stretch gap-4 sm:flex-row sm:*:w-1/2 {isAnimating
 						? 'absolute'
 						: ''}"
 				>
 					<div>
 						<img class="h-full" src={project.img} alt="" />
 					</div>
-					<div>
-						<h3>{project.title}</h3>
+					<div class=" flex flex-col justify-between gap-4">
+						<h3 class=" text-primary text-5xl font-black">{project.title}</h3>
 						<p>{project.text}</p>
 						<div class="flex gap-5">
-							<a href={project.links.github} class="btn-primary">Github</a>
+							{#each Object.entries(project.links) as [linkName, linkValue]}
+								<a href={linkValue} class="btn-primary">{linkName}</a>
+							{/each}
 							<a href={project.links.live} class="btn-primary">Live</a>
 						</div>
 					</div>

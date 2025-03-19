@@ -9,12 +9,24 @@
 		<section class="items-between row-start-1 flex flex-col justify-around space-y-5">
 			<div class="flex flex-col">
 				<label class="font-bold" for="name"> Name </label>
-				<input class="rounded-norm bg-neutral-200 px-3 py-2" type="text" name="name" id="name" />
+				<input
+					required
+					class="rounded-norm bg-neutral-200 px-3 py-2"
+					type="text"
+					name="name"
+					id="name"
+				/>
 			</div>
 
 			<div class="flex flex-col">
 				<label class="font-bold" for="email"> Email </label>
-				<input class="rounded-norm bg-neutral-200 px-3 py-2" type="email" name="email" id="email" />
+				<input
+					required
+					class="rounded-norm bg-neutral-200 px-3 py-2"
+					type="email"
+					name="email"
+					id="email"
+				/>
 			</div>
 		</section>
 
@@ -24,8 +36,9 @@
 				Send a brief description of the projects you’d like me to help bring to life.
 			</p>
 			<textarea
+				required
 				rows={8}
-				class="rounded-norm max-w-[70ch] bg-neutral-200 px-3 py-2"
+				class="rounded-norm focus-within:outline-primary max-w-[70ch] resize-none bg-neutral-200 px-3 py-2"
 				name="message"
 				id="message"
 			></textarea>
