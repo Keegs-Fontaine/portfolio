@@ -62,7 +62,7 @@
 	<div class="wrapper">
 		<h2 class="main-site-header">My Projects</h2>
 
-		<section class=" relative w-full">
+		<section class=" rounded-norm relative w-full overflow-clip bg-white">
 			{#each [projects[currentProject]] as project (currentProject)}
 				<article
 					transition:fade
@@ -75,7 +75,7 @@
 					<div>
 						<img class="h-full" src={project.img} alt="" />
 					</div>
-					<div class=" flex flex-col justify-between gap-4">
+					<div class=" text-neutral-dark flex flex-col justify-between gap-4 py-12">
 						<h3 class=" text-primary text-5xl font-black">{project.title}</h3>
 						<p>{project.text}</p>
 						<div class="flex gap-5">
