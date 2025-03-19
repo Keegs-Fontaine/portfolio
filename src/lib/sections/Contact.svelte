@@ -1,5 +1,10 @@
 <section class="main-site-section">
-	<form class=" wrapper grid-cols-2 gap-5 space-y-10 md:grid">
+	<form
+		class=" wrapper grid-cols-2 gap-5 space-y-10 md:grid"
+		name="contacts"
+		method="POST"
+		data-netlify="true"
+	>
 		<h2 class="col-start-2 mb-12 md:text-right">
 			<span class=" main-site-header">
 				<span class="inline-block text-nowrap md:mb-10">Let's Work</span> Together
