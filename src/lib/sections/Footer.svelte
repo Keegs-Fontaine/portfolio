@@ -1,25 +1,24 @@
 <script lang="ts">
-	import logo from '$lib/assets/logo.svg';
-	import Linkedin from '$lib/assets/icons/linkedin.svelte';
-	import Github from '$lib/assets/icons/github.svelte';
-	import Resume from '$lib/assets/icons/resume.svelte';
-	import type { Snippet } from 'svelte';
+	import logo from "$lib/assets/logo.svg";
+	import Linkedin from "$lib/assets/icons/linkedin.svelte";
+	import Github from "$lib/assets/icons/github.svelte";
+	import Resume from "$lib/assets/icons/resume.svelte";
 
 	const links = [
 		{
-			name: 'LinkedIn',
+			name: "LinkedIn",
 			icon: Linkedin,
-			link: ''
+			link: "https://www.linkedin.com/in/keegan-fontaine/"
 		},
 		{
-			name: 'GitHub',
+			name: "GitHub",
 			icon: Github,
-			link: ''
+			link: "https://github.com/Keegs-Fontaine"
 		},
 		{
-			name: 'Resume',
+			name: "Resume",
 			icon: Resume,
-			link: ''
+			link: "/keegan_fontaine_resume.pdf"
 		}
 	];
 </script>
@@ -30,7 +29,7 @@
 			<img src={logo} alt="Keegan Fontaine" />
 		</a>
 
-		<ul class="flex flex-wrap items-center justify-center gap-5 pt-5">
+		<ul class="flex flex-wrap items-center justify-center gap-5 pt-5 sm:pt-0">
 			{#each links as link}
 				<li>
 					<a

@@ -1,4 +1,4 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @theme {
 	--color-primary: #c24661;
@@ -20,6 +20,7 @@
 
 	body {
 		color: var(--color-neutral-dark);
+		line-height: 1.5;
 	}
 
 	img {
@@ -29,6 +30,10 @@
 	input:focus-within,
 	textarea:focus-within {
 		outline-color: var(--color-primary);
+	}
+
+	p {
+		@apply leading-7;
 	}
 }
 
@@ -42,7 +47,7 @@
 	}
 
 	.btn-primary {
-		@apply bg-primary rounded-md px-4 py-2 text-white;
+		@apply bg-primary rounded-md px-4 py-2 font-bold text-white;
 	}
 
 	.main-site-header {
@@ -58,10 +63,24 @@
 	}
 }
 
-@media (max-width: 1100px) {
+.space-bg {
+	background-image: url("/planet.svg"), url("../src/lib/assets/stars.svg");
+	background-repeat: no-repeat, repeat;
+	background-size: 50rem, 30%;
+	background-position-x: calc(100% + 10rem);
+	background-position-y: -10rem;
+}
+
+@media (max-width: 1300px) {
 	.space-bg {
-		background-size: 70%;
-		background-position: calc(100% + 10rem) calc(100% + 10rem);
+		background-size: 40rem;
+		background-position-y: calc(100% + 5rem);
+	}
+}
+
+@media (max-width: 900px) {
+	.space-bg {
+		background-size: 30rem;
 	}
 }
 

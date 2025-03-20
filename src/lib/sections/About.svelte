@@ -1,14 +1,19 @@
 <script lang="ts">
+	import calc from "../assets/calc_code.png";
+	import login from "../assets/gold_login.png";
+
 	const abouts = [
 		{
-			header: 'How it Started',
-			text: 'blah blah blah',
-			img: 'https://picsum.photos/300/200'
+			header: "How it Started",
+			text: "For much of my life I've had an interest in computer technology, culminating in taking my high school's computer science class. Almost imediately, I was hooked. I loved the challenge of solving complex problems, using computers as a means to do so. Eventually, this lead me to enroll in Ball State's computer science program.",
+			img: calc,
+			caption:
+				"A piece of code for a really simple spinning calculator I made while learning Javascript."
 		},
 		{
 			header: "Where it's Going",
-			text: 'aah fdsjakl fdhsa fdsa',
-			img: 'https://picsum.photos/300/200'
+			text: "Since enrolling, I've joined Ball State's Digital Corps as a fullstack software developer. Here, I've learned necessary technical and nontechnical skills in which to design, build, and test applications of all kinds.",
+			img: login
 		}
 	];
 </script>
@@ -23,8 +28,11 @@
 					? 'sm:flex-row-reverse'
 					: 'sm:flex-row'}"
 			>
-				<div class="rounded-norm overflow-clip">
-					<img src={about.img} alt="" />
+				<div class="">
+					<img class="rounded-norm" src={about.img} alt="" />
+					{#if about.caption}
+						<p class=" text-[0.75rem] italic">{about.caption}</p>
+					{/if}
 				</div>
 				<section>
 					<h3 class="text-primary text-2xl font-black">{about.header}</h3>
