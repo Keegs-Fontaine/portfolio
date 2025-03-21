@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { PUBLIC_FORMS_URL } from "$env/static/public";
+
 	let form: HTMLFormElement;
 
 	const handleFormSubmission = async (e: Event) => {
@@ -6,9 +8,7 @@
 
 		const formData = new FormData(form);
 
-		console.log(formData.get("message"));
-
-		await fetch(import.meta.env.FORMS_URL, {
+		await fetch(PUBLIC_FORMS_URL, {
 			method: "POST",
 			body: formData,
 			headers: {
@@ -23,7 +23,6 @@
 <section class="main-site-section">
 	<form
 		bind:this={form}
-		onformdata={(e) => console.log(e)}
 		onsubmit={(e) => {
 			submission = "pending";
 			handleFormSubmission(e)
