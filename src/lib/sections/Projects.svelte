@@ -4,6 +4,8 @@
 
 	import gold from "../assets/gold.png";
 	import ha from "../assets/ha.png";
+	import ceres from "../assets/ceres.png";
+	import mybsu from "../assets/mybsu.png";
 
 	type Project = {
 		img: string;
@@ -24,9 +26,23 @@
 		{
 			img: gold,
 			title: "BSU's Gold Program",
-			text: "A website to advertise Ball State's GOLD program across campus, an opportunity for graduate students to engage with their community to a greater extent, and learn necessary industry skills. With a need to track user progress through the program, this site integrates with Ball State's SSO authentication to allow for a customized profile page, with an admin panel to manage. ",
+			text: "A website to advertise Ball State's GOLD program across campus, an opportunity for graduate students to engage with their community to a greater extent, and learn necessary industry skills. With a need to track user progress through the webapp, this site integrates with Ball State's SSO authentication to allow for a customized profile page, with an admin panel to manage student enrollment. ",
 			tech: ["Sveltekit", "Typescript", "AdonisJS", "Docker/containerization", "MySQL"],
 			links: { "Live Site": "https://gold.apsoprojects.org" }
+		},
+		{
+			img: ceres,
+			title: "CERES",
+			text: "A website for Ball State's Center for Energy Research Education Service (CERES), cateloguing the history and goals of the organiztion to study energy use and conservation. This site is filled with fun little animations, and was one of my first experiences getting thrown into a codebase halfway to completion. It was an incredibly valuable experience!",
+			tech: ["React", "Typescript", "React Router", "GSAP"],
+			links: { "Live Site": "http://cap-ceres.s3-website.us-east-2.amazonaws.com" }
+		},
+		{
+			img: mybsu,
+			title: "My Ballstate",
+			text: "A huge project, My Ballstate is BSU's new student information portal. The site functions as a centerpoint for a collection of widgets, for which I was part of the development process. Because each widget requirs its own design and functionality, the design and development process was intensely iterative -- and constantly engaging.",
+			tech: ["HTML/CSS/JS", "Asynchronous Data Fetching", "RSS Feeds"],
+			links: { "Live Site": "https://myballstate.bsu.edu/public/dashboard" }
 		}
 	];
 
