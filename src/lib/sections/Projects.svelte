@@ -70,9 +70,9 @@
 		<div class=" overflow-auto rounded-2xl">
 			<section
 				onscrollend={(e) => {
-					currentProject = e.currentTarget.scrollLeft / e.currentTarget.clientWidth;
+					// currentProject = e.currentTarget.scrollLeft / e.currentTarget.clientWidth;
 				}}
-				class=" rounded-norm outline-neutral-dark custom-scrollbar relative flex w-full snap-x snap-mandatory overflow-x-scroll bg-white outline-2 outline-offset-[-1px]"
+				class=" rounded-norm outline-neutral-dark custom-scrollbar relative flex w-full snap-x snap-mandatory overflow-x-hidden bg-white outline-2 outline-offset-[-1px]"
 			>
 				{#each projects as project, i}
 					<article
