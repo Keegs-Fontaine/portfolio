@@ -1,6 +1,6 @@
 <script lang="ts">
 	import calc from "../assets/calc_code.png";
-	import login from "../assets/gold_login.png";
+	import golang from "../assets/golang_websockets.png";
 
 	const abouts = [
 		{
@@ -13,7 +13,7 @@
 		{
 			header: "Where it's Going",
 			text: "Since enrolling, I've joined Ball State's Digital Corps as a fullstack software developer. Here, I've learned necessary technical and nontechnical skills in which to design, build, and test applications of all kinds.",
-			img: login
+			img: golang
 		}
 	];
 </script>

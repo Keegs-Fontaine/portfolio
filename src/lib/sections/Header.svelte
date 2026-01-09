@@ -1,5 +1,5 @@
 <script lang="ts">
-	import logo from '$lib/assets/logo.svg';
+	import logo from "$lib/assets/logo.svg";
 
 	let isMenuOpen = $state(false);
 </script>
@@ -18,10 +18,10 @@
 				: ' max-sm:translate-y-[-150%] '}"
 		>
 			<li>
-				<a class=" block py-5" href="#projects">Projects</a>
+				<a class=" block py-5" href="#about">About Me</a>
 			</li>
 			<li>
-				<a class=" block py-5" href="#about">About Me</a>
+				<a class=" block py-5" href="#projects">Projects</a>
 			</li>
 			<li>
 				<a class=" block py-5" href="#contact">Contact</a>

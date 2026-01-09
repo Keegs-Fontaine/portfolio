@@ -2,10 +2,11 @@
 	import chevron from "$lib/assets/icons/chevron.svg";
 	import { fade } from "svelte/transition";
 
-	import gold from "../assets/gold.png";
 	import ha from "../assets/ha.png";
+	import orchid from "../assets/orchid_db.png";
 	import ceres from "../assets/ceres.png";
 	import mybsu from "../assets/mybsu.png";
+	import { onMount } from "svelte";
 
 	type Project = {
 		img: string;
@@ -24,11 +25,11 @@
 			links: { "Live Site": "http://humanizing-addiction.s3-website-us-east-1.amazonaws.com" }
 		},
 		{
-			img: gold,
-			title: "BSU's Gold Program",
-			text: "A website to advertise Ball State's GOLD program across campus, an opportunity for graduate students to engage with their community to a greater extent, and learn necessary industry skills. With a need to track user progress through the webapp, this site integrates with Ball State's SSO authentication to allow for a customized profile page, with an admin panel to manage student enrollment. ",
-			tech: ["Sveltekit", "Typescript", "AdonisJS", "Docker/containerization", "MySQL"],
-			links: { "Live Site": "https://gold.apsoprojects.org" }
+			img: orchid,
+			title: "BSU Orchid Greenhouse",
+			text: "Ball State's Orchid Greenhouse houses thousands of separate orchid flowers for view by both the general public and academia. This was a huge project that involved the development of a public facing website to view the plant collection, an admin panel with which to update and manage plant data, and new strategies to systematically migrate thousands of plants to a newly developed database.",
+			tech: ["Svelte", "Typescript", "AdonisJS/MVC Architecture", "MySQL", "Docker"],
+			links: {}
 		},
 		{
 			img: ceres,
@@ -39,76 +40,81 @@
 		},
 		{
 			img: mybsu,
-			title: "My Ballstate",
-			text: "A huge project, My Ballstate is BSU's new student information portal. The site functions as a centerpoint for a collection of widgets, for which I was part of the development process. Because each widget requirs its own design and functionality, the design and development process was intensely iterative -- and constantly engaging.",
+			title: "MyBallState",
+			text: "A huge project, 'MyBallState' is BSU's new student information portal. The site functions as a centerpoint for a collection of widgets, for which I was part of the development process. Because each widget requirs its own design and functionality, the design and development process was intensely iterative -- and constantly engaging.",
 			tech: ["HTML/CSS/JS", "Asynchronous Data Fetching", "RSS Feeds"],
 			links: { "Live Site": "https://myballstate.bsu.edu/public/dashboard" }
 		}
 	];
 
-	const moveLeft = () => {
-		if (currentProject > 0) {
-			currentProject--;
-		} else {
-			currentProject = projects.length - 1;
-		}
-	};
-
-	const moveRight = () => {
-		if (currentProject < projects.length - 1) {
-			currentProject++;
-		} else {
-			currentProject = 0;
-		}
-	};
-
 	let currentProject = $state(0);
-	let isAnimating = $state(false);
 
 	const dot = " block aspect-square w-5 rounded-full bg-white";
+
+	function getNextProj() {
+		return currentProject >= projects.length - 1 ? 0 : currentProject + 1;
+	}
+	function getLastProj() {
+		return currentProject <= 0 ? projects.length - 1 : currentProject - 1;
+	}
+
+	let carouselElements: HTMLElement[] = $state([]);
+
+	let currentScrollPos = $state(0);
 </script>
 
 <section class="main-site-section space-bg">
 	<div class="wrapper">
 		<h2 class="main-site-header">My Projects</h2>
 
-		<section
-			class=" rounded-norm outline-neutral-dark relative w-full overflow-clip bg-white outline-2 outline-offset-[-1px]"
-		>
-			{#each [projects[currentProject]] as project (currentProject)}
-				<article
-					transition:fade
-					onintrostartcapture={() => (isAnimating = true)}
-					onintroend={() => (isAnimating = false)}
-					class=" project-card mx-auto flex w-full flex-col items-stretch gap-4 transition-all sm:flex-row sm:*:w-1/2 {isAnimating
-						? 'absolute'
-						: ''}"
-				>
-					<div>
-						<img loading="lazy" src={project.img} alt="" />
-					</div>
-					<div class=" text-neutral-dark flex flex-col gap-5 p-5 text-lg font-bold">
-						<h3 class=" text-primary text-2xl font-black md:text-5xl">{project.title}</h3>
-						<p class=" font-light">{project.text}</p>
-						<div class="mt-auto">
-							<span class=" text-primary">Some of the tech:</span>
-							{#each project.tech as tech, index}
-								<span>{tech}{index === project.tech.length - 1 ? "" : ", "} </span>
-							{/each}
+		<div class=" overflow-auto rounded-2xl">
+			<section
+				onscrollend={(e) => {
+					currentProject = e.currentTarget.scrollLeft / e.currentTarget.clientWidth;
+				}}
+				class=" rounded-norm outline-neutral-dark custom-scrollbar relative flex w-full snap-x snap-mandatory overflow-x-scroll bg-white outline-2 outline-offset-[-1px]"
+			>
+				{#each projects as project, i}
+					<article
+						bind:this={carouselElements[i]}
+						class=" project-card transition-height mx-auto flex h-fit w-full shrink-0 snap-center flex-col items-stretch gap-4 transition-all lg:flex-row lg:*:w-1/2"
+					>
+						<div class=" grid overflow-y-clip md:h-[30rem]">
+							<img src={project.img} alt="" />
 						</div>
-						<div class=" flex gap-5">
-							{#each Object.entries(project.links) as [linkName, linkValue]}
-								<a href={linkValue} target="_blank" class="btn-primary">{linkName}</a>
-							{/each}
+						<div class=" text-neutral-dark flex flex-col gap-5 p-5 text-lg font-bold">
+							<h3 class=" text-primary text-2xl font-black md:text-5xl">{project.title}</h3>
+							<p class=" font-light">{project.text}</p>
+							<div class="mt-auto">
+								<span class=" text-primary">Some of the tech:</span>
+								{#each project.tech as tech, index}
+									<span>{tech}{index === project.tech.length - 1 ? "" : ", "} </span>
+								{/each}
+							</div>
+							<div class=" flex gap-5">
+								{#each Object.entries(project.links) as [linkName, linkValue]}
+									<a href={linkValue} target="_blank" class="btn-primary">{linkName}</a>
+								{/each}
+							</div>
 						</div>
-					</div>
-				</article>
-			{/each}
-		</section>
+					</article>
+				{/each}
+			</section>
+		</div>
 
 		<div class=" mt-5 flex items-center justify-center gap-4">
-			<button disabled={isAnimating} onclick={moveLeft}>
-				<img class=" rotate-180" src={chevron} alt="" />
+			<button
+				onclick={() => {
+					currentProject = getLastProj();
+
+					carouselElements[currentProject].scrollIntoView({
+						inline: "center",
+						block: "center",
+						behavior: "smooth"
+					});
+				}}
+			>
+				<img class=" rotate-180" src={chevron} alt="Previous" />
 			</button>
 
 			{#each projects as _, index}
@@ -119,7 +125,17 @@
 				{/if}
 			{/each}
 
-			<button disabled={isAnimating} onclick={moveRight}><img src={chevron} alt="" /></button>
+			<button
+				onclick={() => {
+					currentProject = getNextProj();
+
+					carouselElements[currentProject].scrollIntoView({
+						inline: "center",
+						block: "center",
+						behavior: "smooth"
+					});
+				}}><img src={chevron} alt="Next" /></button
+			>
 		</div>
 	</div>
 </section>
@@ -128,5 +144,9 @@
 	.space-bg {
 		background-position-x: -10rem;
 		background-position-y: calc(100% + 10rem);
+	}
+
+	.custom-scrollbar {
+		scrollbar-color: var(--color-primary) gray;
 	}
 </style>
