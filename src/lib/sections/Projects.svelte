@@ -6,6 +6,7 @@
 	import orchid from "../assets/orchid_db.png";
 	import ceres from "../assets/ceres.png";
 	import mybsu from "../assets/mybsu.png";
+	import busTracker from "../assets/bus_tracker.png"
 	import { onMount } from "svelte";
 
 	type Project = {
@@ -44,6 +45,13 @@
 			text: "A huge project, 'MyBallState' is BSU's new student information portal. The site functions as a centerpoint for a collection of widgets, for which I was part of the development process. Because each widget requirs its own design and functionality, the design and development process was intensely iterative -- and constantly engaging.",
 			tech: ["HTML/CSS/JS", "Asynchronous Data Fetching", "RSS Feeds"],
 			links: { "Live Site": "https://myballstate.bsu.edu/public/dashboard" }
+		},
+		{
+			img: busTracker,
+			title: "BSU Campus Bus Tracker",
+			text: "This is a campus-wide project to provide a bus-tracking interface for students across campus. Our busses allow students to easily travel across campus -- to hopefully alleviate the need to physically walk miles each day between buildings. This project involved setting up physical hardware to track bus locations, recording that data for administrators, and showing bus locations/information to students.",
+			tech: ["Typescript", "Web Sockets/Persistent Connections", "Web Assembly"],
+			links: {}
 		}
 	];
 
