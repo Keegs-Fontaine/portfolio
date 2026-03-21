@@ -1,13 +1,11 @@
 <script lang="ts">
 	import chevron from "$lib/assets/icons/chevron.svg";
-	import { fade } from "svelte/transition";
 
 	import ha from "../assets/ha.png";
 	import orchid from "../assets/orchid_db.png";
-	import ceres from "../assets/ceres.png";
 	import mybsu from "../assets/mybsu.png";
-	import busTracker from "../assets/bus_tracker.png"
-	import { onMount } from "svelte";
+	import busTracker from "../assets/bus_tracker.png";
+	import pointMLPic from "../assets/point_ml_colorado.png";
 
 	type Project = {
 		img: string;
@@ -33,17 +31,10 @@
 			links: {}
 		},
 		{
-			img: ceres,
-			title: "CERES",
-			text: "A website for Ball State's Center for Energy Research Education Service (CERES), cateloguing the history and goals of the organiztion to study energy use and conservation. This site is filled with fun little animations, and was one of my first experiences getting thrown into a codebase halfway to completion. It was an incredibly valuable experience!",
-			tech: ["React", "Typescript", "React Router", "GSAP"],
-			links: { "Live Site": "http://cap-ceres.s3-website.us-east-2.amazonaws.com" }
-		},
-		{
 			img: mybsu,
 			title: "MyBallState",
 			text: "A huge project, 'MyBallState' is BSU's new student information portal. The site functions as a centerpoint for a collection of widgets, for which I was part of the development process. Because each widget requirs its own design and functionality, the design and development process was intensely iterative -- and constantly engaging.",
-			tech: ["HTML/CSS/JS", "Asynchronous Data Fetching", "RSS Feeds"],
+			tech: ["HTML/CSS/JS", "Asynchronous Data Fetching", "Bash", "JS Asset Bundlers"],
 			links: { "Live Site": "https://myballstate.bsu.edu/public/dashboard" }
 		},
 		{
@@ -51,6 +42,13 @@
 			title: "BSU Campus Bus Tracker",
 			text: "This is a campus-wide project to provide a bus-tracking interface for students across campus. Our busses allow students to easily travel across campus -- to hopefully alleviate the need to physically walk miles each day between buildings. This project involved setting up physical hardware to track bus locations, recording that data for administrators, and showing bus locations/information to students.",
 			tech: ["Typescript", "Web Sockets/Persistent Connections", "Web Assembly"],
+			links: {}
+		},
+		{
+			img: pointMLPic,
+			title: "Point ML",
+			text: "In conjunction with the USDA and the Purdue Datamine, Point ML is a Python library for creating statistical models for forest variables. It uses data from the public Forest Inventory and Analysis program (FIA) in parallel with Google Earth Engine satellite data to generate statistical models 'wall to wall' across the United States. Because FIA data is recorded in specific locations across the US, there was a need to generate models that could give estimates for forest variables between where these tree plots are specifically recorded.",
+			tech: ["Python", "Pandas/Numpy/Scikit Learn", "GEE"],
 			links: {}
 		}
 	];
@@ -87,8 +85,8 @@
 						bind:this={carouselElements[i]}
 						class=" project-card transition-height mx-auto flex h-fit w-full shrink-0 snap-center flex-col items-stretch gap-4 transition-all lg:flex-row lg:*:w-1/2"
 					>
-						<div class=" grid overflow-y-clip md:h-[30rem]">
-							<img src={project.img} alt="" />
+						<div class=" grid place-content-center overflow-y-clip md:h-[30rem]">
+							<img class="xl:h-full" src={project.img} alt="" />
 						</div>
 						<div class=" text-neutral-dark flex flex-col gap-5 p-5 text-lg font-bold">
 							<h3 class=" text-primary text-2xl font-black md:text-5xl">{project.title}</h3>
